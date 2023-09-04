@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+           <!-- Tạo Action -->
+        <record id="action_student_ql" model="ir.actions.act_window">
+            <field name="name">Thông tin học sinh</field>
+            <field name="res_model">student.ql</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Create a new student for more</p>
+            </field>
+        </record>
+        <!-- Top menu item -->
+        <menuitem id="student_menu"
+                  name="Học sinh"
+                  parent="school.school_qlsv"
+                  sequence="2"/>
+
+        <menuitem id="student_submenu"
+                  name="Học sinh"
+                  parent="school.student_menu"
+                  action="action_student_ql"
+                  sequence="2"/>
+
+        <!--        Tạo list View-->
+        <record id="student_qlsv_list_view" model="ir.ui.view">
+            <field name="name">Student Information List</field>
+            <field name="model">student.ql</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách học sinh">
+                    <field name="school_id"/>
+                    <field name="class_id"/>
+                    <field name="name"/>
+                    <field name="birthday"/>
+                    <field name="tuition" sum="Total"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Tạo form View -->
+        <record id="student_qlsv_form_view" model="ir.ui.view">
+            <field name="name">Student Information Form</field>
+            <field name="model">student.ql</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="school_id"/>
+                            <field name="class_id"/>
+                            <field name="name"/>
+                            <field name="birthday"/>
+                        </group>
+                        <group>
+                            <field name="subject_list" widget="many2many_tags" string="Các môn học đăng ký"
+                                   help="Đây là danh sách môn học của học sinh">
+                            </field>
+                        </group>
+                        <group>
+                            <field name="tuition"/>
+                            <field name="currency_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

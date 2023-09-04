@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        Tạo Action-->
+        <record id="action_class_ql" model="ir.actions.act_window">
+            <field name="name">Thông tin lớp học</field>
+            <field name="res_model">class.ql</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Create a new class for more</p>
+            </field>
+        </record>
+
+        <menuitem id="class_menu"
+                  name="Lớp học"
+                  parent="school.school_qlsv"
+                  action="action_class_ql"
+                  sequence="2"/>
+
+        <!-- Tạo list View -->
+        <record id="class_qlsv_list_view" model="ir.ui.view">
+            <field name="name">Class Information List</field>
+            <field name="model">class.ql</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách lớp">
+                    <field name="school_id"/>
+                    <field name="name"/>
+                    <field name="mainTeacher"/>
+                    <field name="address"/>
+                    <field name="grade"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Tạo form View -->
+        <record id="class_qlsv_form_view" model="ir.ui.view">
+            <field name="name">Class Information Form</field>
+            <field name="model">class.ql</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="school_id"/>
+                            <field name="name"/>
+                            <field name="mainTeacher"/>
+                            <field name="grade"/>
+                        </group>
+                        <group>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="student_list" editable="inline" optional="show">
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tạo Action -->
+        <record id="action_school_ql" model="ir.actions.act_window">
+            <field name="name">Thông tin trường học</field>
+            <field name="res_model">school.ql</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Create a new school for more</p>
+            </field>
+        </record>
+        <!-- Top menu item -->
+        <menuitem id="school_qlsv"
+                  name="QLSV"
+                  web_icon="school,static/description/icon.png"
+                  sequence="3"/>
+        <menuitem id="school_submenu"
+                  name="Trường học"
+                  parent="school_qlsv"
+                  action="action_school_ql"
+                  sequence="2"/>
+        <!-- Tạo list View -->
+        <record id="school_qlsv_list_view" model="ir.ui.view">
+            <field name="name">School Information List</field>
+            <field name="model">school.ql</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách trường">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                    <field name="hasOnlineClass"/>
+                    <field name="tuition"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Tạo form View -->
+        <record id="school_qlsv_form_view" model="ir.ui.view">
+            <field name="name">School Information Form</field>
+            <field name="model">school.ql</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="type"/>
+                            <field name="email"/>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="hasOnlineClass"/>
+                            <field name="document" filename="document_name"/>
+                            <field name="document_name" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="class_list" editable="bottom" optional="show">
+                                <field name="name"/>
+                                <field name="mainTeacher"/>
+                                <field name="grade"/>
+                            </field>
+                        </group>
+                        <group>
+                            <field name="tuition"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

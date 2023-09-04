@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <!-- Tạo Action -->
+        <record id="action_subject_ql" model="ir.actions.act_window">
+            <field name="name">Thông tin môn học</field>
+            <field name="res_model">subject.ql</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Create a new subject for more</p>
+            </field>
+        </record>
+        <menuitem id="subject_qlsv_menu"
+                  name="Môn học"
+                  parent="school.student_menu"
+                  action="action_subject_ql"
+                  sequence="3"/>
+
+        <!--        Tạo list View-->
+        <record id="subject_qlsv_list_view" model="ir.ui.view">
+            <field name="name">Subject Information List</field>
+            <field name="model">subject.ql</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách môn học">
+                    <field name="name"/>
+                    <field name="author"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Tạo form View -->
+        <record id="subject_qlsv_form_view" model="ir.ui.view">
+            <field name="name">Subject Information Form</field>
+            <field name="model">subject.ql</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"></field>
+                            <field name="author"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

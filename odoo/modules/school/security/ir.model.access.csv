@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_school_qlsv,school.ql,model_school_ql,,1,1,1,1
+access_class_qlsv,class.ql,model_class_ql,,1,1,1,1
+access_student_qlsv,student.ql,model_student_ql,,1,1,1,1
+access_subject_qlsv,subject.ql,model_subject_ql,,1,1,1,1
